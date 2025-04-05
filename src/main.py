@@ -2,17 +2,17 @@
 """
 Filename    : main.py
 Author      : Viktor
-Porject     : Audit docker-compose best practises
-Description : Main module to audit docker compose best practises.
+Porject     : Audit docker-compose best practices
+Description : Main module to audit docker compose best practices.
 """
 
 import os
 import sys
 import yaml
-from audit_compose_bp import AuditComposeBestPractises
+from audit_compose_bp import AuditComposeBestPractices
 
 def audit_all_yaml_files_in_the_current_directory(
-    auditer: AuditComposeBestPractises) -> None:
+    auditer: AuditComposeBestPractices) -> None:
     """Audit all the yaml files in the current directory"""
     yaml_file_found = 0
     failed_audit = 0
@@ -27,13 +27,13 @@ def audit_all_yaml_files_in_the_current_directory(
                     print(f"❌ Error parsing {open_file}: {error}")
             failed_audit += auditer.check_docker_compose(file, compose_data)
     if yaml_file_found == 0:
-        print("❌ any yaml file could'nt be found in the current directory!")
-        sys.exit(1)
+        print("❌ any yaml file couldn't be found in the current directory!")
+        sys.exit(2)
     if yaml_file_found == failed_audit:
-        print("❌ The yaml file(s) could'nt be audited!")
-        sys.exit(1)
+        print("❌ The yaml file(s) couldn't be audited!")
+        sys.exit(3)
 
-def print_audit_result(auditer: AuditComposeBestPractises) -> None:
+def print_audit_result(auditer: AuditComposeBestPractices) -> None:
     """Print audit result"""
     errors = auditer.get_errors()
 
@@ -49,7 +49,7 @@ def print_audit_result(auditer: AuditComposeBestPractises) -> None:
         sys.exit(0)
 
 if __name__ == "__main__":
-    auditer_object = AuditComposeBestPractises()
+    auditer_object = AuditComposeBestPractices()
 
     audit_all_yaml_files_in_the_current_directory(auditer_object)
     print_audit_result(auditer_object)
