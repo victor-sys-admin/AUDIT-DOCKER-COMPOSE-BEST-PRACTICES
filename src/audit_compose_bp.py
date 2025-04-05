@@ -2,12 +2,12 @@
 """
 Filename    : audit_compose_bp.py
 Author      : Viktor
-Porject     : Audit docker-compose best practises
-Description : Module to audit docker-compose best practises.
+Porject     : Audit docker-compose best practices
+Description : Module to audit docker-compose best practices.
 """
 
-class AuditComposeBestPractises():
-    """Class to handle the audit of compose files best practises"""
+class AuditComposeBestPractices():
+    """Class to handle the audit of compose files best practices"""
     def __init__(self) -> None:
         """Init of the class"""
         self.checks_succed = 0
